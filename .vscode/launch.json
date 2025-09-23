@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+        "type": "firefox",
+        "request": "launch",
+        "name": "Launch Firefox for Vue App",
+        "url": "http://localhost:5173",
+        "webRoot": "${workspaceFolder}/website",
+        "reloadOnAttach": true,
+        "pathMappings": [
+            {
+                "url": "http://localhost:5173",
+                "path": "${workspaceFolder}/website"
+            }
+        ]
+    }
+]
+}
