@@ -1,2 +1,0 @@
-# clippyfi
-clippy has morals
