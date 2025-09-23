@@ -8,5 +8,7 @@ app.get('/api/prompt', (req: Request, res: Response) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is running`);
+  const env = process.env.NODE_ENV as 'production' | 'development' | 'test' | undefined;
+  console.log(`Server is running, port ${port}`);
+  console.log('Running in env:', env)
 });
