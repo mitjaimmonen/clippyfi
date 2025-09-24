@@ -1,4 +1,4 @@
-name: Build clippyfi
+name: Build & run clippyfi
 on:
   push:
     branches: [ main ]
@@ -36,3 +36,13 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ghcr.io/mitjaimmonen/clippyfi:latest
+
+  deploy:
+    runs-on: self-hosted
+    needs: build
+    steps:
+      - name: Pull latest images
+        run: docker-compose pull
+
+      - name: Deploy updated containers
+        run: docker-compose up -d
