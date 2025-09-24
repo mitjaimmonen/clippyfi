@@ -6,11 +6,11 @@ const port = 3000;
 
 // ------- Serve Vue frontend -------- //
 
-// public = Vue dist
-app.use(express.static(path.join(__dirname, 'public'))); 
+// Serve static Vue files
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Fallback route for SPA
-app.get('*', (req, res) => {
+// SPA fallback
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
