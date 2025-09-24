@@ -1,5 +1,5 @@
 # ---------- Build Vue frontend ----------
-FROM node:18-alpine AS build-frontend
+FROM node:22-alpine AS build-frontend
 WORKDIR /website
 COPY website/package*.json ./
 RUN npm ci
@@ -7,7 +7,7 @@ COPY website/ .
 RUN npm run build
 
 # ---------- Build Express backend ----------
-FROM node:18-alpine AS backend
+FROM node:22-alpine AS backend
 WORKDIR /server
 
 # Install backend deps
