@@ -10,7 +10,7 @@ const port = 3000;
 app.use(express.static(path.join(__dirname, 'public')));
 
 // SPA fallback
-app.get('/*', (req, res) => {
+app.get('/:path(.*)', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
