@@ -1,0 +1,18 @@
+name: Build clippyfi
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Login to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Build & Push Image
+        run: |
+          docker build -t ghcr.io/mitjaimmonen/clippyfi:latest .
+          docker push ghcr.io/mitjaimmonen/clippyfi:latest
