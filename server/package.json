@@ -5,10 +5,10 @@
   "license": "ISC",
   "author": "mitja",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn src/index.ts",
-    "prod": "cross-env NODE_ENV=production ts-node src/index.ts"
+    "dev": "ts-node-dev --respawn src/server.ts",
+    "prod": "cross-env NODE_ENV=production ts-node src/server.ts"
   },
   "dependencies": {
     "express": "^5.1.0"
