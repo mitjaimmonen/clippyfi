@@ -45,7 +45,7 @@ jobs:
     needs: build
     steps:
       - name: Pull latest images
-        run: docker-compose -f $COMPOSE_PATH pull
+        run: docker compose -f $COMPOSE_PATH pull
 
       - name: Deploy updated containers
-        run: docker-compose -f $COMPOSE_PATH up -d
+        run: docker compose -f $COMPOSE_PATH up -d
