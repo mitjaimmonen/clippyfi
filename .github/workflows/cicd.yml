@@ -42,7 +42,7 @@ jobs:
     needs: build
     steps:
       - name: Pull latest images
-        run: docker-compose pull
+        run: docker compose pull
 
       - name: Deploy updated containers
-        run: docker-compose up -d
+        run: docker compose up -d
