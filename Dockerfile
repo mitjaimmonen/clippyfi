@@ -1,28 +1,31 @@
-# ---------- Build Vue frontend ----------
-FROM node:22-alpine AS build-frontend
+# ---------- Build website ----------
+FROM node:22-alpine AS build-website
 WORKDIR /website
 COPY website/package*.json ./
 RUN npm ci
 COPY website/ .
 RUN npm run build
 
-# ---------- Build Express backend ----------
-FROM node:22-alpine AS backend
+# ---------- Build server ----------
+FROM node:22-alpine AS build-server
 WORKDIR /server
+COPY server/package*.json ./
+RUN npm ci
+COPY server/ .
+# Compile TypeScript to dist
+RUN npm install typescript --save-dev \
+    && npx tsc
 
-# Install backend deps
-COPY server/package*.json ./server/
-RUN cd server && npm ci --only=production
-
-# Copy source and tsconfig
-COPY server ./server
-
-# Compile TypeScript
-RUN cd server && npm install typescript --save-dev && npx tsc
-
-# Copy frontend build into public
-COPY --from=build-frontend /website/dist ./server/dist/public
-
+# ---------- Production image ----------
+FROM node:22-alpine
 WORKDIR /server
+COPY server/package*.json ./
+RUN npm ci --only=production
+
+# Copy compiled server
+COPY --from=build-server /server/dist ./dist
+# Copy built website into public folder (if needed)
+COPY --from=build-website /website/dist ./dist/public
+
 EXPOSE 3000
 CMD ["node", "dist/server.js"]
