@@ -3,6 +3,9 @@ on:
   push:
     branches: [ main ]
 
+env:
+  COMPOSE_PATH: $HOME/apps/docker-stack/docker-compose.yml
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -42,7 +45,7 @@ jobs:
     needs: build
     steps:
       - name: Pull latest images
-        run: docker compose pull
+        run: docker-compose -f $COMPOSE_PATH pull
 
       - name: Deploy updated containers
-        run: docker compose up -d
+        run: docker-compose -f $COMPOSE_PATH up -d
