@@ -24,7 +24,7 @@
               <v-card-title>
                 <h2 class="text-h5 font-weight-bold">
                   <span v-if="prompt != null">{{ prompt }}</span>
-                  <span v-else> Clippy is not happy about the state of the world.</span>
+                  <span v-else> Clippy is kind.</span>
                 </h2>
               </v-card-title>
             </v-card>
