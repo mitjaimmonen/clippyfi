@@ -7,7 +7,7 @@ const port = 3000;
 // ------- Serve API -------- //
 
 app.get('/api/prompt', (req: Request, res: Response) => {
-  res.json({ message: 'Clippy would not advertise in your paid product.' });
+  res.json({ message: 'Clippy would not advertise inside a product you paid for.' });
 });
 
 // ------- Serve Vue frontend -------- //
