@@ -20,6 +20,10 @@ RUN npm install typescript --save-dev \
 FROM node:22-alpine
 WORKDIR /server
 COPY server/package*.json ./
+
+# Set NODE_ENV globally
+ENV NODE_ENV=production
+
 RUN npm ci --only=production
 
 # Copy compiled server
