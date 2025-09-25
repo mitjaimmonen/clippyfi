@@ -1,13 +1,18 @@
 import express, { Request, Response } from 'express';
 import path from 'path';
+import fs from 'fs';
 
 const app = express();
 const port = 3000;
 
 // ------- Serve API -------- //
 
+const resourcePath = path.join(process.cwd(), "resources");
+const prompts = JSON.parse(fs.readFileSync(path.join(resourcePath, 'prompts.json'), 'utf-8'));
+
 app.get('/api/prompt', (req: Request, res: Response) => {
-  res.json({ message: 'Clippy would not advertise inside a product you paid for.' });
+  const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+  res.json({ message: randomPrompt });
 });
 
 // ------- Serve Vue frontend -------- //

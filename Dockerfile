@@ -28,6 +28,8 @@ RUN npm ci --only=production
 
 # Copy compiled server
 COPY --from=build-server /server/dist ./dist
+# Copy resources
+COPY --from=build-server /server/resources ./resources
 # Copy built website into public folder (if needed)
 COPY --from=build-website /website/dist ./dist/public
 
