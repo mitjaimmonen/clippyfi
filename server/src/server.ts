@@ -1,9 +1,6 @@
 import express, { Request, Response } from 'express';
 import path from 'path';
 import fs from 'fs';
-import i18next from 'i18next';
-import Backend from 'i18next-fs-backend';
-import middleware from 'i18next-http-middleware';
 
 const app = express();
 const port = 3000;
@@ -31,7 +28,7 @@ app.get('/api/prompt', (req: Request, res: Response) => {
   const lang = getLang(req);
   const file = path.join(resourcePath, `prompts.${lang}.json`);
   let prompts: string[] = [];
-  
+
   try {
     const data = fs.readFileSync(file, 'utf-8');
     prompts = JSON.parse(data).prompts;
