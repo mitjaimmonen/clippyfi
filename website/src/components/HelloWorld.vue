@@ -1,11 +1,18 @@
 <script setup lang="ts">
-  import { useTheme } from 'vuetify'
+  import { useI18n } from 'vue-i18n'
+  import { useLocale, useTheme } from 'vuetify'
 
+  const { t, locale } = useI18n()
+  const { current } = useLocale()
   const theme = useTheme()
-
   const prompt = ref(null)
   const darkMode = ref(theme.current.value.dark)
-  const language = ref(navigator.language || 'en')
+  const language = ref((navigator.language || 'en').split('-')[0]!)
+
+  function changeLocale (loc: string) {
+    current.value = loc
+    locale.value = loc
+  }
 
   onMounted(async () => {
     fetchPrompt()
@@ -14,6 +21,11 @@
   // Sync Vuetify theme with darkMode
   watch(darkMode, val => {
     theme.global.name.value = val ? 'dark' : 'light'
+    fetchPrompt()
+  })
+
+  watch(language, val => {
+    changeLocale(val)
     fetchPrompt()
   })
 
@@ -30,6 +42,15 @@
       : new URL('@/assets/clippy.png', import.meta.url).href
   })
 
+  const languageItems = computed(() => [
+    { value: 'en', title: t('english') },
+    { value: 'fi', title: t('finnish') },
+  ])
+
+  const tPrompt = computed(() => t('defaultPrompt'))
+  const tNewPrompt = computed(() => t('newPrompt'))
+  const tLanguage = computed(() => t('language'))
+  const tDarkMode = computed(() => t('darkMode'))
 </script>
 
 <template>
@@ -38,14 +59,14 @@
       v-model="darkMode"
       class="ma-4 shrink-card"
       inset
-      label="Dark mode"
+      :label="tDarkMode"
     />
     <v-spacer />
     <v-select
       v-model="language"
       class="ma-4 shrink-card"
-      :items="['en', 'fi']"
-      label="Language"
+      :items="languageItems"
+      :label="tLanguage"
       rounded
       style="max-width: 150px"
     />
@@ -65,7 +86,7 @@
             <img alt="logo" class="py-4" :src="imageSrc" width="128">
             <h2 class="text-h5 font-weight-bold">
               <span v-if="prompt != null">{{ prompt }}</span>
-              <span v-else> Clippy is kind.</span>
+              <span v-else> {{ tPrompt }}</span>
             </h2>
           </a>
 
@@ -75,7 +96,7 @@
             rounded
             @click="fetchPrompt"
           >
-            New Prompt
+            {{ tNewPrompt }}
           </v-btn>
         </v-col>
       </v-row>
