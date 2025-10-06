@@ -15,6 +15,7 @@
   }
 
   onMounted(async () => {
+    changeLocale(language.value)
     fetchPrompt()
   })
 
