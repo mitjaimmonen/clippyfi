@@ -108,8 +108,7 @@
 
 <style scoped>
 .shrink-card {
-  display: inline-block; /* shrink-wrap width */
-  /* optionally add max-width to prevent it growing too big */
+  display: inline-block;
   max-width: 100%;
 }
 
