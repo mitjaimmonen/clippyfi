@@ -5,9 +5,14 @@
   const { t, locale } = useI18n()
   const { current } = useLocale()
   const theme = useTheme()
-  const prompt = ref(null)
+  const prompt = ref<PromptResponse | null>(null)
   const darkMode = ref(theme.current.value.dark)
   const language = ref((navigator.language || 'en').split('-')[0]!)
+
+  interface PromptResponse {
+    message: string
+    index: number
+  }
 
   function changeLocale (loc: string) {
     current.value = loc
@@ -32,9 +37,12 @@
 
   async function fetchPrompt () {
     console.log(`Fetching prompt for darkMode=${darkMode.value}, language=${language.value}`)
-    const response = await fetch(`/api/prompt?dark=${darkMode.value}&lang=${language.value}`)
-    const data = await response.json()
-    prompt.value = data['message']
+    const qDark = `dark=${darkMode.value}`
+    const qLang = `&lang=${language.value}`
+    const qIndex = prompt.value ? `&index=${prompt.value.index}` : ''
+    const response = await fetch(`/api/prompt?${qDark}${qLang}${qIndex}`)
+    const data = await response.json() as PromptResponse
+    prompt.value = data
   }
 
   const imageSrc = computed(() => {
@@ -42,6 +50,10 @@
       ? new URL('@/assets/clippy-dark.png', import.meta.url).href
       : new URL('@/assets/clippy.png', import.meta.url).href
   })
+
+  const formattedPrompt = computed(() =>
+    prompt.value ? prompt.value.message.replace(/\n/g, '<br>') : '',
+  )
 
   const languageItems = computed(() => [
     { value: 'en', title: t('english') },
@@ -86,7 +98,7 @@
           <a href="https://youtu.be/2_Dtmpe9qaQ?feature=shared" style="text-decoration: none;" target="_blank">
             <img alt="logo" class="py-4" :src="imageSrc" width="128">
             <h2 class="text-h5 font-weight-bold">
-              <span v-if="prompt != null">{{ prompt }}</span>
+              <span v-if="prompt != null" v-html="formattedPrompt" />
               <span v-else> {{ tPrompt }}</span>
             </h2>
           </a>

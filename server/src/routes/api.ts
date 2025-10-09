@@ -1,18 +1,18 @@
 import { Router, Request, Response } from 'express';
-import path from 'path';
-import fs from 'fs';
 import { getLang } from '../utils/languageUtility';
 import { getPrompts, getPromptType } from '../utils/promptUtility';
+import { getIndex } from '../utils/indexUtility';
 
 const router = Router();
 
 router.get('/prompt', (req: Request, res: Response) => {
-  const promptType = getPromptType(req);
   const lang = getLang(req);
-  let prompts = getPrompts(promptType, lang);
-  
-  const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
-  res.json({ message: randomPrompt });
+  const promptType = getPromptType(req);
+  const prompts = getPrompts(promptType, lang);
+  const index = getIndex(prompts, req);
+
+  const pormpt = prompts[index];
+  res.json({ message: pormpt, index: index });
 });
 
 export default router;
