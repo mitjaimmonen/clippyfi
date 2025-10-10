@@ -96,7 +96,9 @@
       <v-row align="center" justify="center">
         <v-col align="center" justify="center">
           <a href="https://youtu.be/2_Dtmpe9qaQ?feature=shared" style="text-decoration: none;" target="_blank">
-            <img alt="logo" class="py-4" :src="imageSrc" width="128">
+            <div class="image-box">
+              <img alt="logo" class="py-4 clippy-img" :src="imageSrc" width="256">
+            </div>
             <h2 class="text-h5 font-weight-bold">
               <span v-if="prompt != null" v-html="formattedPrompt" />
               <span v-else> {{ tPrompt }}</span>
@@ -124,4 +126,22 @@
   max-width: 100%;
 }
 
+.image-box {
+  width: 128px;
+  height: 128px;
+  overflow: visible;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clippy-img {
+  width: 256px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 </style>
