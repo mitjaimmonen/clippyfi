@@ -138,22 +138,30 @@
 
     <!-- Footer -->
     <v-footer app class="pa-0">
-      <v-sheet
-        class="py-4 d-flex align-center justify-center flex-wrap text-center mx-auto"
-        elevation="4"
-        width="100%"
-      >
-        <p class="text-caption text-center ma-0">
-          <a
-            class="text-error"
-            :href="tFooterLink"
-            style="text-decoration: none; font-weight: bold;"
-            target="_blank"
-          >
-            {{ tFooter }}
-          </a>
-        </p>
-      </v-sheet>
+      <v-col class="pa-0">
+        <v-row class="ma-0 px-4 pb-2">
+          <v-spacer />
+          <span class="text-medium-emphasis text-caption">
+            mitja.fi @2025
+          </span>
+        </v-row>
+        <v-sheet
+          class="py-4 d-flex align-center justify-center flex-wrap text-center mx-auto"
+          elevation="4"
+          width="100%"
+        >
+          <p class="text-caption text-center ma-0">
+            <a
+              class="text-error"
+              :href="tFooterLink"
+              style="text-decoration: none; font-weight: bold;"
+              target="_blank"
+            >
+              {{ tFooter }}
+            </a>
+          </p>
+        </v-sheet>
+      </v-col>
     </v-footer>
   </v-layout>
 </template>
