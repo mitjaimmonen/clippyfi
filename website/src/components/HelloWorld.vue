@@ -138,7 +138,7 @@
     </v-main>
 
     <!-- Footer -->
-    <v-footer app class="pa-0">
+    <v-footer app class="pa-0 bg-background">
       <v-col class="pa-0">
         <v-row class="ma-0 px-4 pb-2">
           <v-spacer />
