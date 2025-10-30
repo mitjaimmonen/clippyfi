@@ -74,6 +74,13 @@ export default defineConfig({
     },
     extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "vuetify" as *;`,
+      },
+    },
+  },
   server: {
     proxy: {
       '/api': {

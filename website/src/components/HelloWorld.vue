@@ -75,13 +75,13 @@
     <v-main>
       <v-container
         class="pt-8 d-flex justify-center"
-
         style="height: 100%"
         width="100%"
       >
         <div style="width: 600px; max-width: 100%">
           <v-sheet
             class="py-4 px-4 d-flex mx-auto"
+            elevation="4"
             max-width="600"
             rounded
             width="100%"
