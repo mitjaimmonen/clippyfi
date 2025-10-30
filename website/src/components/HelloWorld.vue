@@ -112,15 +112,13 @@
                   <div class="image-box">
                     <img alt="logo" class="py-4 clippy-img" :src="imageSrc" width="256">
                   </div>
-                  <a href="https://youtu.be/2_Dtmpe9qaQ" style="text-decoration: none;" target="_blank">
-                    <h2
-                      class="text-h5 font-weight-bold"
-                      style="min-height: 4em; display: flex; align-items: center; justify-content: center"
-                    >
-                      <span v-if="prompt != null" v-html="formattedPrompt" />
-                      <span v-else> {{ tPrompt }}</span>
-                    </h2>
-                  </a>
+                  <h2
+                    class="text-h5 font-weight-bold"
+                    style="min-height: 4em; display: flex; align-items: center; justify-content: center"
+                  >
+                    <span v-if="prompt != null" v-html="formattedPrompt" />
+                    <span v-else> {{ tPrompt }}</span>
+                  </h2>
 
                   <v-btn
                     class="ma-4 shrink-card"
@@ -151,11 +149,11 @@
           elevation="4"
           width="100%"
         >
-          <p class="text-caption text-center ma-0">
+          <p class="text-title text-center ma-0">
             <a
               class="text-error"
               :href="tFooterLink"
-              style="text-decoration: none; font-weight: bold;"
+              style="text-decoration: underline; font-weight: bold;"
               target="_blank"
             >
               {{ tFooter }}
