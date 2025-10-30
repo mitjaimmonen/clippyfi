@@ -108,10 +108,10 @@
               </v-row>
               <v-row align="center" justify="center">
                 <v-col align="center" justify="center">
+                  <div class="image-box">
+                    <img alt="logo" class="py-4 clippy-img" :src="imageSrc" width="256">
+                  </div>
                   <a href="https://youtu.be/2_Dtmpe9qaQ" style="text-decoration: none;" target="_blank">
-                    <div class="image-box">
-                      <img alt="logo" class="py-4 clippy-img" :src="imageSrc" width="256">
-                    </div>
                     <h2
                       class="text-h5 font-weight-bold"
                       style="min-height: 4em; display: flex; align-items: center; justify-content: center"
