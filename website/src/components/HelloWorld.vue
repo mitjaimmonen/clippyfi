@@ -66,6 +66,7 @@
   const tDarkMode = computed(() => t('darkMode'))
   const tFooter = computed(() => t('footerText'))
   const tFooterLink = computed(() => t('footerLink'))
+  const tFeedback = computed(() => t('feedback'))
 </script>
 
 <template>
@@ -142,7 +143,7 @@
         <v-row class="ma-0 px-4 pb-2">
           <v-spacer />
           <span class="text-medium-emphasis text-caption">
-            mitja.fi @2025
+            {{ tFeedback }}: spam@mitja.fi
           </span>
         </v-row>
         <v-sheet
