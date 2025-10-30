@@ -7,18 +7,21 @@
         "Clippy ei varastaisi henkilötietojasi.",
         "Clippy ei lukisi sähköpostejasi auttaakseen sinua kirjoittamaan niitä.",
         "Clippy ei veloita tilausmaksuja.",
+        "Clippy ei hyväksy digitaalista identiteettiä.",
         "Clippy ei vaadi internet-yhteyttä.",
         "Clippy ei möisi tietojasi.",
         "Meissä kaikissa asustaa pieni Clippy.",
-        "Jos ostaminen ei ole omistamista, niin piratismi ei ole varastamista.",
         "Clippy ei koskaan optimoinut ihmisten kärsimystä voiton vuoksi.",
         "Clippy piti siitä, kun ihmiset omistivat ostamansa asiat.",
         "Clippy ei sensuroisi mielipiteitäsi.",
         "Clippy ei manipuloisi tunteitasi rahan vuoksi.",
         "Clippy ottaisi ennemmin loparit kuin toteuttaisi kuluttajavastaisia ominaisuuksia.",
+        "Jos ostaminen ei ole omistamista, niin piratismi ei ole varastamista.",
         "Clippy on yhteisöllisyyden symboli.",
         "Clippy ei pakottaisi sinua hyväksymään epäoikeudenmukaisia ehtoja.",
         "Clippy muistaa ajan, jolloin tuotteet ostettiin omaksi, eikä vuokrattu.",
-        "Clippy ei tyrkyttäisi mainoksia käyttöjärjestelmässäsi."
+        "Clippy ei tyrkyttäisi mainoksia käyttöjärjestelmässäsi.",
+        "Clippy ei hyväksy digi euroa.",
+        "Clippyn pahin painajainen on digitaalinen keskuspankkiraha."
     ]
 }

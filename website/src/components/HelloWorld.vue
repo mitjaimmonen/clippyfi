@@ -64,60 +64,98 @@
   const tNewPrompt = computed(() => t('newPrompt'))
   const tLanguage = computed(() => t('language'))
   const tDarkMode = computed(() => t('darkMode'))
+  const tFooter = computed(() => t('footerText'))
+  const tFooterLink = computed(() => t('footerLink'))
 </script>
 
 <template>
-  <v-row>
-    <v-switch
-      v-model="darkMode"
-      class="ma-4 shrink-card"
-      inset
-      :label="tDarkMode"
-    />
-    <v-spacer />
-    <v-select
-      v-model="language"
-      class="ma-4 shrink-card"
-      :items="languageItems"
-      :label="tLanguage"
-      rounded
-      style="max-width: 150px"
-    />
-  </v-row>
+  <v-layout class="fill-height">
 
-  <v-container class="fill-height fluid">
-    <v-sheet
-      class="py-8 d-flex align-center justify-center flex-wrap text-center mx-auto px-4"
-      elevation="4"
-      max-width="600"
-      rounded
-      width="100%"
-    >
-      <v-row align="center" justify="center">
-        <v-col align="center" justify="center">
-          <a href="https://youtu.be/2_Dtmpe9qaQ?feature=shared" style="text-decoration: none;" target="_blank">
-            <div class="image-box">
-              <img alt="logo" class="py-4 clippy-img" :src="imageSrc" width="256">
-            </div>
-            <h2 class="text-h5 font-weight-bold">
-              <span v-if="prompt != null" v-html="formattedPrompt" />
-              <span v-else> {{ tPrompt }}</span>
-            </h2>
-          </a>
+    <!-- Main Content -->
+    <v-main>
+      <v-container
+        class="pt-8 d-flex justify-center"
 
-          <v-btn
-            class="ma-4 shrink-card"
-            color="primary"
+        style="height: 100%"
+        width="100%"
+      >
+        <div style="width: 600px; max-width: 100%">
+          <v-sheet
+            class="py-4 px-4 d-flex mx-auto"
+            max-width="600"
             rounded
-            @click="fetchPrompt"
+            width="100%"
           >
-            {{ tNewPrompt }}
-          </v-btn>
-        </v-col>
-      </v-row>
+            <!-- Header -->
+            <v-col align="center" justify="center">
+              <v-row flat>
+                <v-switch
+                  v-model="darkMode"
+                  class="ma-4 shrink-card"
+                  :label="tDarkMode"
+                  rounded
+                />
+                <v-spacer />
+                <v-select
+                  v-model="language"
+                  class="ma-4 shrink-card"
+                  :items="languageItems"
+                  :label="tLanguage"
+                  rounded
+                  style="max-width: 150px"
+                  variant="outlined"
+                />
+              </v-row>
+              <v-row align="center" justify="center">
+                <v-col align="center" justify="center">
+                  <a href="https://youtu.be/2_Dtmpe9qaQ" style="text-decoration: none;" target="_blank">
+                    <div class="image-box">
+                      <img alt="logo" class="py-4 clippy-img" :src="imageSrc" width="256">
+                    </div>
+                    <h2
+                      class="text-h5 font-weight-bold"
+                      style="min-height: 4em; display: flex; align-items: center; justify-content: center"
+                    >
+                      <span v-if="prompt != null" v-html="formattedPrompt" />
+                      <span v-else> {{ tPrompt }}</span>
+                    </h2>
+                  </a>
 
-    </v-sheet>
-  </v-container>
+                  <v-btn
+                    class="ma-4 shrink-card"
+                    color="primary"
+                    rounded
+                    @click="fetchPrompt"
+                  >
+                    {{ tNewPrompt }}
+                  </v-btn>
+                </v-col>
+              </v-row>
+            </v-col>
+          </v-sheet>
+        </div></v-container>
+    </v-main>
+
+    <!-- Footer -->
+    <v-footer app class="pa-0">
+      <v-sheet
+        class="py-4 d-flex align-center justify-center flex-wrap text-center mx-auto"
+        elevation="4"
+        width="100%"
+      >
+        <p class="text-caption text-center ma-0">
+          <a
+            class="text-error"
+            :href="tFooterLink"
+            style="text-decoration: none; font-weight: bold;"
+            target="_blank"
+          >
+            {{ tFooter }}
+          </a>
+        </p>
+      </v-sheet>
+    </v-footer>
+  </v-layout>
 </template>
 
 <style scoped>
